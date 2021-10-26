@@ -1,8 +1,6 @@
-import React from 'react';
 import {render} from 'react-dom';
 import Main from "./Main";
 import User from "./User";
-
 
 class App extends React.Component {
   constructor(props) {
@@ -29,13 +27,6 @@ class App extends React.Component {
   }
 }
 
-
-
-render(
-  // <React.StrictMode>
-     <App />
-  // </React.StrictMode>,
-  ,document.getElementById('root')
-);
+render(<React.StrictMode> <App /> </React.StrictMode>,document.getElementById('root'));
 
 

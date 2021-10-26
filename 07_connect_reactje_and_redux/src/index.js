@@ -1,6 +1,6 @@
 import React from 'react';
-import {createStore, combineReducers, applyMiddleware} from "redux";
 import {render} from 'react-dom';
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import App from "./components/App";
 import logger from "redux-logger";
 import { Provider } from 'react-redux';
@@ -60,20 +60,14 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
 };
 
 const store = createStore ( 
-  combineReducers( {mathReducer, userReducer} ),
-  {}, 
-  applyMiddleware(myLogger, logger)
-  ); 
+    combineReducers( {mathReducer, userReducer} ),
+    {}, 
+    applyMiddleware(myLogger, logger)
+); 
   
   store.subscribe( () => { //  fat arrow function get fired when the store is updated
     // console.log("Store updated ", store.getState());
   })
   
 
-render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>, 
- document.getElementById('root') );
+render(<Provider store={store}><App /></Provider>, document.getElementById('root') );

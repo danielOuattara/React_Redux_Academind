@@ -1,122 +1,73 @@
-// import React from 'react';
-// import {render} from 'react-dom';
-// import Main from "./Main";
-// import User from "./User";
+import React from 'react';
+import {render} from 'react-dom';
+import {createStore, combineReducers, applyMiddleware} from "redux";
+import App from "./containers/App";
+import logger from "redux-logger";
+import { Provider } from 'react-redux';
 
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       username: "Max" 
-//     };
-//     this.changeUsername = this.changeUsername.bind(this);
-//   }
-  
-//   changeUsername (newName) {
-//     this.setState({
-//       username: newName
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <Main changeUsername= {this.changeUsername} />
-//         <User username={this.state.username} />
-//       </div>
-//     );
-//   }
-// }
-
-// render(
-//   // <React.StrictMode>
-//      <App />
-//   // </React.StrictMode>,
-//   ,document.getElementById('root')
-// );
-
-//=================================================================
-
-import {createStore} from "redux";
-
-const initialState = {
-  result: 1,
-  lastValues: [],
-  vegetables: {
-    tomatoes:  {
-      red: 1,
-      "green zebra":1
-    },
-    apples: {
-      goldens: 1,
-      michette: 1
-    }
-  }
-}
-
-const reducer = (state = initialState, action) => {
-
+const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
   switch (action.type) {
-
-    // case 'ADD':
-      // state.result += action.payload  // <= not good: manipulate directly the state
-      // break;
-
     case 'ADD':
       state = {
-        ...state,  // spread operator ES6
-        result: state.result + action.payload, // modifying result in the new state
-        lastValues: [...state.lastValues, action.payload], // modifying result in the new state
-        vegetables: {
-          ...state.vegetables,
-          tomatoes: {
-            ...state.vegetables.tomatoes,
-            "green zebra": state.vegetables.tomatoes["green zebra"] + action.payload
-          },
-          apples: {
-            ...state.vegetables.apples,
-            goldens: state.vegetables.apples.goldens + action.payload,
-          }
-        },
+        ...state,  
+        result: state.result + action.payload, 
+        lastValues: [...state.lastValues, action.payload],
+      };
+      break;
+      
+      case 'SUBSTRACT':
+        
+        state = {
+        ...state, 
+        result: state.result + action.payload, 
+        lastValues: [...state.lastValues, action.payload], 
+      }
+      break;  
+      
+      default:
+        return state;
+  }
+  return state; 
+}
 
+
+const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
+  
+  switch (action.type) {
+    case 'SET_NAME':
+      state = {
+        ...state,  
+        name: action.payload
       };
       break;
 
-    case 'SUBSTRACT':
-
+      case 'SET_AGE':
       state = {
-        ...state, // spread operator ES6
-        result: state.result + action.payload, // modifying result in the new state
-        lastValues: [...state.lastValues, action.payload], // modifying result in the new state
-        
-      }
-
+        ...state, 
+        age: action.payload,
+      };
       break;  
     
-    default:
+      default:
         return state;
-  }
-  return state; // return the new state 
-}
+      }
+      return state; 
+    }
 
-const store = createStore( reducer); // reducer holds himself the initial state, see Ligne: 43
+    const myLogger =(state) => (next) => (action) => {
+      console.log("Logged Action: ", action);
+  next(action);
+};
 
-store.subscribe( () => { //  fat arrow function get fired when the store is updated
-  console.log("Store updated ", store.getState());
-})
+const store = createStore ( 
+    combineReducers( {mathReducer, userReducer} ),
+    {}, 
+    applyMiddleware(myLogger, logger)
+); 
+  
+  store.subscribe( () => { //  fat arrow function get fired when the store is updated
+    // console.log("Store updated ", store.getState());
+  })
+  
 
-store.dispatch({
-  type: 'ADD',
-  payload: + 100
-});
-
-store.dispatch({
-  type: 'ADD',
-  payload: + 22
-});
-
-
-store.dispatch({
-  type: 'SUBSTRACT',
-  payload: -80
-});
+render(<Provider store={store}><App /></Provider>, document.getElementById('root') );

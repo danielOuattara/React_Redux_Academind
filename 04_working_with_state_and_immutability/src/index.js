@@ -1,41 +1,3 @@
-// import React from 'react';
-// import {render} from 'react-dom';
-// import Main from "./Main";
-// import User from "./User";
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       username: "Max" 
-//     };
-//     this.changeUsername = this.changeUsername.bind(this);
-//   }
-  
-//   changeUsername (newName) {
-//     this.setState({
-//       username: newName
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <Main changeUsername= {this.changeUsername} />
-//         <User username={this.state.username} />
-//       </div>
-//     );
-//   }
-// }
-
-// render(
-//   // <React.StrictMode>
-//      <App />
-//   // </React.StrictMode>,
-//   ,document.getElementById('root')
-// );
-
-//=================================================================
 
 import {createStore} from "redux";
 
@@ -88,7 +50,6 @@ const reducer = (state = initialState, action) => {
         ...state, // spread operator ES6
         result: state.result + action.payload, // modifying result in the new state
         lastValues: [...state.lastValues, action.payload], // modifying result in the new state
-        
       }
 
       break;  
