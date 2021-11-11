@@ -2,8 +2,12 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import logger from "redux-logger";
 
+const mathInitialState = {
+  result: 1, 
+  lastValues: [] 
+};
 
-const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
+const mathReducer = ( state = mathInitialState, action) => {
   switch (action.type) {
     case 'ADD':
       state = {
@@ -28,8 +32,12 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
   return state; // return the new state 
 }
 
+const userInitialState = {
+  name: "Daniel", 
+  age: 37 
+};
 
-const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
+const userReducer = ( state = userInitialState, action) => {
 
   switch (action.type) {
     case 'SET_NAME':
@@ -52,7 +60,7 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
   return state; // return the new state 
 }
 
-const myLogger = (state) => (next) => (action) => {
+const myLogger = (store) => (next) => (action) => {
   console.log("Logged Action: ", action);
   next(action);
 };
@@ -60,12 +68,12 @@ const myLogger = (state) => (next) => (action) => {
 const store = createStore ( 
     combineReducers( {mathReducer, userReducer} ),
     {}, 
-    applyMiddleware(myLogger, logger)
+    applyMiddleware(/* myLogger, */ logger)
 ); 
 
-store.subscribe( () => { //  fat arrow function get fired when the store is updated
-  console.log("Store updated ", store.getState());
-})
+// store.subscribe( () => { //  fat arrow function get fired when the store is updated
+//   console.log("Store updated ", store.getState());
+// })
 
 store.dispatch({
   type: 'ADD',

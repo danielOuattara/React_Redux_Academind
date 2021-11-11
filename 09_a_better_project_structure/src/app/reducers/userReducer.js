@@ -1,6 +1,10 @@
+const userInitialData = {
+  name: "Daniel", 
+  age: 37 
+};
 
-const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
-  
+
+const userReducer = ( state =  userInitialData, action) => {
   switch (action.type) {
     case 'SET_NAME':
       state = {

@@ -1,5 +1,9 @@
+const mathInitilData  = {
+  result: 1, 
+  lastValues: [] 
+};
 
-const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
+const mathReducer = ( state = mathInitilData, action) => {
   switch (action.type) {
     case 'ADD':
       state = {

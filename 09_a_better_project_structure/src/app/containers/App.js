@@ -1,11 +1,11 @@
 
-import React from "react";
+import { Component } from "react";
 import { connect } from "react-redux";
 import { setName } from "./../actions/userAction";
 import { Main } from "./../components/Main";
 import { User } from "./../components/User";
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <div className="container">

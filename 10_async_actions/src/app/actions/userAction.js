@@ -1,5 +1,5 @@
 
-// export function setName(name ) {
+// export function setName(name) {
 //     return  dispatch => {
 //         setTimeout(() => {
 //             dispatch({

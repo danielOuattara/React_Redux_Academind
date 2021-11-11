@@ -4,26 +4,20 @@
 // import User from "./User";
 
 // class App extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.changeUsername = this.changeUsername.bind(this);
-//   }
-  
-//   changeUsername (newName) {
-//   }
-
 //   render() {
-//     console.log(this.props)
 //     return (
 //       <div className="container">
-//         {/* <Main changeUsername= {this.changeUsername} /> */}
+//         <Main changeUsername= {() =>this.props.setName("Gaia")} />
 //         <User username={this.props.name} age={this.props.age}/>
 //       </div>
 //     );
 //   }
 // }
 
-// const mapStateToProps = (state) => {  // CAHNGED BELLOW
+/* CASE 1 
+-----------*/
+
+// const mapStateToProps = (state) => {  // CHANGED BELLOW
 //   return { ...state.userReducer, ...state.mathReducer };
 // };
 
@@ -37,9 +31,10 @@
 //     }
 //   };
 // };
-
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 
+
+//--------------------------------------------------------------------------------
 
 
 import React from 'react';
@@ -49,8 +44,7 @@ import User from "./User";
 
 class App extends React.Component {
   render() {
-
-    console.log(this.props);
+    console.log(this.props)
     return (
       <div className="container">
         <Main changeUsername= {() => this.props.setName("Julie")} />
@@ -60,12 +54,23 @@ class App extends React.Component {
   }
 }
 
+/* CASE 1 
+-----------*/
 const mapStateToProps = (state) => {
   return {
     user: state.userReducer,
     math: state.mathReducer
   };
 };
+
+/* CASE 2
+-----------*/
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user,
+//     math: state.math
+//   };
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return {

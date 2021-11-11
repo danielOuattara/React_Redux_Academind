@@ -1,8 +1,12 @@
 
 import {createStore, combineReducers} from "redux";
 
+const mathInitialState = {
+  result: 1, 
+  lastValues: [] 
+};
 
-const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
+const mathReducer = ( state = mathInitialState, action) => {
   switch (action.type) {
     case 'ADD':
       state = {
@@ -27,8 +31,12 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
   return state; // return the new state 
 }
 
+const userInitialState = {
+  name: "Daniel", 
+  age: 37 
+};
 
-const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
+const userReducer = ( state = userInitialState , action) => {
 
   switch (action.type) {
     case 'SET_NAME':

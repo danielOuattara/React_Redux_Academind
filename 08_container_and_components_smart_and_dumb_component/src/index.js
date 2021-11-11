@@ -1,5 +1,4 @@
-import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import App from "./containers/App";
 import logger from "redux-logger";
@@ -54,20 +53,10 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
       return state; 
     }
 
-    const myLogger =(state) => (next) => (action) => {
-      console.log("Logged Action: ", action);
-  next(action);
-};
-
 const store = createStore ( 
     combineReducers( {mathReducer, userReducer} ),
     {}, 
-    applyMiddleware(myLogger, logger)
+    applyMiddleware(logger)
 ); 
   
-  store.subscribe( () => { //  fat arrow function get fired when the store is updated
-    // console.log("Store updated ", store.getState());
-  })
-  
-
 render(<Provider store={store}><App /></Provider>, document.getElementById('root') );

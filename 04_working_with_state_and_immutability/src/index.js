@@ -1,9 +1,8 @@
-
 import {createStore} from "redux";
 
 const initialState = {
   result: 1,
-  lastValues: [],
+  lastValues: [13, 34, 26],
   vegetables: {
     tomatoes:  {
       red: 1,
@@ -21,7 +20,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     // case 'ADD':
-      // state.result += action.payload  // <= not good: manipulate directly the state
+      // state.result += action.payload  // <= not good to manipulate directly the state
       // break;
 
     case 'ADD':
@@ -40,7 +39,6 @@ const reducer = (state = initialState, action) => {
             goldens: state.vegetables.apples.goldens + action.payload,
           }
         },
-
       };
       break;
 
@@ -51,7 +49,6 @@ const reducer = (state = initialState, action) => {
         result: state.result + action.payload, // modifying result in the new state
         lastValues: [...state.lastValues, action.payload], // modifying result in the new state
       }
-
       break;  
     
     default:
@@ -60,7 +57,7 @@ const reducer = (state = initialState, action) => {
   return state; // return the new state 
 }
 
-const store = createStore( reducer); // reducer holds himself the initial state, see Ligne: 43
+const store = createStore(reducer); // reducer holds himself the initial state, see Ligne: 18
 
 store.subscribe( () => { //  fat arrow function get fired when the store is updated
   console.log("Store updated ", store.getState());

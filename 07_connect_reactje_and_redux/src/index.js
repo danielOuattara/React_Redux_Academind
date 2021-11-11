@@ -32,7 +32,6 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
 
 
 const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
-  
   switch (action.type) {
     case 'SET_NAME':
       state = {
@@ -52,22 +51,34 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
         return state;
       }
       return state; 
-    }
+  }
 
-    const myLogger =(state) => (next) => (action) => {
-      console.log("Logged Action: ", action);
-  next(action);
-};
-
-const store = createStore ( 
+/* CASE 1 
+-----------*/
+const store = createStore (  
     combineReducers( {mathReducer, userReducer} ),
     {}, 
-    applyMiddleware(myLogger, logger)
+    applyMiddleware(logger)
 ); 
+
+
+/* CASE 2
+-----------*/
+// const store = createStore ( 
+//     combineReducers( {
+//       math: mathReducer, 
+//       user: userReducer
+//     }),
+//     {}, 
+//     applyMiddleware(logger)
+// ); 
   
-  store.subscribe( () => { //  fat arrow function get fired when the store is updated
-    // console.log("Store updated ", store.getState());
-  })
+// store.subscribe( () => { //  fat arrow function get fired when the store is updated
+//     // console.log("Store updated ", store.getState());
+// });
   
 
-render(<Provider store={store}><App /></Provider>, document.getElementById('root') );
+render( <Provider store={store}>
+          <App />
+        </Provider>, document.getElementById('root') 
+);
