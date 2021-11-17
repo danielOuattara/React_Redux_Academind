@@ -5,5 +5,5 @@ export const User =  (props) => {
             <h2>User page: </h2>
             <p>Username: {props.username}</p>                
         </div>
-    )
+    );
 }

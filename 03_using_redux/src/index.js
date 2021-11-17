@@ -17,7 +17,7 @@ const reducer = (state, action) => {
 }
 
 // 1
-const store = createStore( reducer , 1 /* = initial state*/); 
+const store = createStore( reducer , 1 /* 1 = initial state*/); 
 
 // 4
 store.subscribe( () => { //  fat arrow function get fired when the store is updated

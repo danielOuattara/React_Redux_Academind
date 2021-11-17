@@ -1,6 +1,6 @@
 import React from 'react';
-import {render} from 'react-dom';
-import {createStore, combineReducers, applyMiddleware} from "redux";
+import { render } from 'react-dom';
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import App from "./components/App";
 import logger from "redux-logger";
 import { Provider } from 'react-redux';
@@ -53,29 +53,25 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
       return state; 
   }
 
-/* CASE 1 
------------*/
-const store = createStore (  
-    combineReducers( {mathReducer, userReducer} ),
-    {}, 
-    applyMiddleware(logger)
-); 
-
-
-/* CASE 2
------------*/
-// const store = createStore ( 
-//     combineReducers( {
-//       math: mathReducer, 
-//       user: userReducer
-//     }),
+/* OK FOR VERSION1  & VERSION2 -CASE1
+-----------------------------------------*/
+// const store = createStore (  
+//     combineReducers( {mathReducer, userReducer} ),
 //     {}, 
 //     applyMiddleware(logger)
 // ); 
-  
-// store.subscribe( () => { //  fat arrow function get fired when the store is updated
-//     // console.log("Store updated ", store.getState());
-// });
+
+
+/* OK FOR VERSION2 CASE2
+-----------------------------------------*/
+const store = createStore ( 
+    combineReducers( {
+      math: mathReducer, 
+      user: userReducer
+    }),
+    {}, 
+    applyMiddleware(logger)
+); 
   
 
 render( <Provider store={store}>

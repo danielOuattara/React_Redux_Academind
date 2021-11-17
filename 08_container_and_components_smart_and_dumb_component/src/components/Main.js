@@ -5,6 +5,5 @@ export const Main = (props) => {
             <h2>Main Page : </h2>
             <button onClick={() => props.changeUsername("Anna")}>Change Username</button>
         </div>
-    )
-    
+    );
 }

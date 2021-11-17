@@ -60,10 +60,10 @@ const userReducer = ( state = userInitialState, action) => {
   return state; // return the new state 
 }
 
-const myLogger = (store) => (next) => (action) => {
-  console.log("Logged Action: ", action);
-  next(action);
-};
+// const myLogger = (store) => (next) => (action) => {
+//   console.log("Logged Action: ", action);
+//   next(action);
+// };
 
 const store = createStore ( 
     combineReducers( {mathReducer, userReducer} ),

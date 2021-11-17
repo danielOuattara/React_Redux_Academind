@@ -1,12 +1,14 @@
 
 import {createStore, combineReducers} from "redux";
 
-const mathInitialState = {
+//----------------------------------------------------
+
+const mathInitialState = { // 9
   result: 1, 
   lastValues: [] 
 };
 
-const mathReducer = ( state = mathInitialState, action) => {
+const mathReducer = ( state = mathInitialState, action) => { // 8
   switch (action.type) {
     case 'ADD':
       state = {
@@ -31,12 +33,14 @@ const mathReducer = ( state = mathInitialState, action) => {
   return state; // return the new state 
 }
 
-const userInitialState = {
+//----------------------------------------------------
+
+const userInitialState = {  // 11
   name: "Daniel", 
   age: 37 
 };
 
-const userReducer = ( state = userInitialState , action) => {
+const userReducer = ( state = userInitialState , action) => { // 10
 
   switch (action.type) {
     case 'SET_NAME':
@@ -59,6 +63,9 @@ const userReducer = ( state = userInitialState , action) => {
   return state; // return the new state 
 }
 
+//------------------------------------------------------
+
+// 12
 const store = createStore( combineReducers({mathReducer, userReducer})); // reducer holds himself the initial state, see Ligne: 43
 
 store.subscribe( () => { //  fat arrow function get fired when the store is updated

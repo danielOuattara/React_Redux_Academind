@@ -1,3 +1,5 @@
+/* version 1 */
+
 // import React from 'react';
 // import { connect } from 'react-redux';
 // import Main from "./Main";
@@ -7,15 +9,12 @@
 //   render() {
 //     return (
 //       <div className="container">
-//         <Main changeUsername= {() =>this.props.setName("Gaia")} />
+//         <Main changeUsername= {(name) =>this.props.setName(name)} />
 //         <User username={this.props.name} age={this.props.age}/>
 //       </div>
 //     );
 //   }
 // }
-
-/* CASE 1 
------------*/
 
 // const mapStateToProps = (state) => {  // CHANGED BELLOW
 //   return { ...state.userReducer, ...state.mathReducer };
@@ -37,6 +36,9 @@
 //--------------------------------------------------------------------------------
 
 
+/* Version 2 
+-------------*/
+
 import React from 'react';
 import { connect } from 'react-redux';
 import Main from "./Main";
@@ -54,23 +56,24 @@ class App extends React.Component {
   }
 }
 
-/* CASE 1 
------------*/
-const mapStateToProps = (state) => {
-  return {
-    user: state.userReducer,
-    math: state.mathReducer
-  };
-};
 
-/* CASE 2
------------*/
+// VERSION2 - CASE 1 
+
 // const mapStateToProps = (state) => {
 //   return {
-//     user: state.user,
-//     math: state.math
+//     user: state.userReducer,
+//     math: state.mathReducer
 //   };
 // };
+
+// VERSION2 - CASE 2
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    math: state.math
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -83,5 +86,4 @@ const mapDispatchToProps = (dispatch) => {
 
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);

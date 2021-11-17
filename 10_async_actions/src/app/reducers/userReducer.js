@@ -2,6 +2,12 @@
 const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
   
   switch (action.type) {
+    case 'SET_NAME':
+      state = {
+        ...state,  
+        name: action.payload
+      };
+      break;
     case 'SET_NAME_FULFILLED':
       state = {
         ...state,  
