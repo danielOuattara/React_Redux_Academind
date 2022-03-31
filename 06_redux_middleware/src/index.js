@@ -65,7 +65,7 @@ const userReducer = ( state = userInitialState, action) => {
 //   next(action);
 // };
 
-const store = createStore ( 
+const store = createStore( 
     combineReducers( {mathReducer, userReducer} ),
     {}, 
     applyMiddleware(/* myLogger, */ logger)

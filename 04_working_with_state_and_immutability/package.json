@@ -1,5 +1,5 @@
 {
-  "name": "03_using_redux",
+  "name": "04_working_with_state_and_immutability",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

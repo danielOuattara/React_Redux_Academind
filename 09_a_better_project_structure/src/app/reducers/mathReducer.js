@@ -1,9 +1,9 @@
-const mathInitilData  = {
+const mathInitialData  = {
   result: 1, 
   lastValues: [] 
 };
 
-const mathReducer = ( state = mathInitilData, action) => {
+const mathReducer = ( state = mathInitialData, action) => {
   switch (action.type) {
     case 'ADD':
       state = {

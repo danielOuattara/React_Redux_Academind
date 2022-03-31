@@ -4,7 +4,7 @@ const userInitialData = {
 };
 
 
-const userReducer = ( state =  userInitialData, action) => {
+const userReducer = ( state = userInitialData, action) => {
   switch (action.type) {
     case 'SET_NAME':
       state = {

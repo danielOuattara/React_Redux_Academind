@@ -28,7 +28,6 @@ const mapDispatchToProps = (dispatch) => {
     setName: (name) => {
       dispatch(setName(name))
     },
-
   };
 };
 

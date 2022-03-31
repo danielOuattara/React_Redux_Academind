@@ -32,9 +32,7 @@
 // };
 // export default connect(mapStateToProps, mapDispatchToProps)(App);
 
-
-//--------------------------------------------------------------------------------
-
+//----------------------------------------------------------------
 
 /* Version 2 
 -------------*/
@@ -45,11 +43,21 @@ import Main from "./Main";
 import User from "./User";
 
 class App extends React.Component {
+
+  // changeUser() {
+  //     this.props.setName("Julie")
+  //     this.props.setAge(number)
+  // }
+  
+
   render() {
     console.log(this.props)
     return (
       <div className="container">
-        <Main changeUsername= {() => this.props.setName("Julie")} />
+        <Main 
+          changeUser= {(newName) => this.props.setName(newName)} 
+          changeAge= {(number) => this.props.setAge(number)} 
+        />
         <User username={this.props.user.name} age={this.props.user.age}/>
       </div>
     );
@@ -59,21 +67,21 @@ class App extends React.Component {
 
 // VERSION2 - CASE 1 
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.userReducer,
-//     math: state.mathReducer
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    user: state.userReducer,
+    math: state.mathReducer
+  };
+};
 
 // VERSION2 - CASE 2
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    math: state.math
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user,
+//     math: state.math
+//   };
+// };
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -81,6 +89,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "SET_NAME",
         payload: name,
+      })
+    },
+    setAge: (number) => {
+      dispatch({
+        type: "SET_AGE",
+        payload: number,
       })
     },
 
