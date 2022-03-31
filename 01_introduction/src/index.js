@@ -1,8 +1,9 @@
-import {render} from 'react-dom';
+import { Component, StrictMode } from 'react';
+import { render } from 'react-dom';
 import Main from "./Main";
 import User from "./User";
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,6 +28,6 @@ class App extends React.Component {
   }
 }
 
-render(<React.StrictMode> <App /> </React.StrictMode>,document.getElementById('root'));
+render(<StrictMode> <App /> </StrictMode>,document.getElementById('root'));
 
 

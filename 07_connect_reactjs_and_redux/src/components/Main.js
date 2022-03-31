@@ -9,7 +9,10 @@ export default class Main extends Component {
         return (
             <div>
                 <h2>Main Page : </h2>
-                <button onClick={() => this.props.changeUsername("Gaïa")}>Change Username</button>
+                <button onClick={() =>  {
+                    this.props.changeUser("Gaïa")
+                    this.props.changeAge(4)
+                }}>Change Username</button>
             </div>
         )
     }

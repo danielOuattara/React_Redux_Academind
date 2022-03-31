@@ -1,5 +1,5 @@
 {
-  "name": "03_using_redux",
+  "name": "06_redux_middleware",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

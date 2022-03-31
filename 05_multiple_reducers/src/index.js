@@ -1,8 +1,7 @@
 
 import {createStore, combineReducers} from "redux";
 
-//----------------------------------------------------
-
+//--------------------------
 const mathInitialState = { // 9
   result: 1, 
   lastValues: [] 
@@ -19,7 +18,6 @@ const mathReducer = ( state = mathInitialState, action) => { // 8
       break;
 
     case 'SUBSTRACT':
-
       state = {
         ...state, // spread operator ES6
         result: state.result + action.payload, // modifying result in the new state
@@ -33,7 +31,7 @@ const mathReducer = ( state = mathInitialState, action) => { // 8
   return state; // return the new state 
 }
 
-//----------------------------------------------------
+//--------------------------
 
 const userInitialState = {  // 11
   name: "Daniel", 
@@ -72,6 +70,7 @@ store.subscribe( () => { //  fat arrow function get fired when the store is upda
   console.log("Store updated ", store.getState());
 })
 
+//--------------
 store.dispatch({
   type: 'ADD',
   payload: + 100
@@ -87,7 +86,7 @@ store.dispatch({
   payload: -80
 });
 
-//---------------------------
+//--------------
 
 store.dispatch({
   type: 'SET_NAME',

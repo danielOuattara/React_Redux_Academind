@@ -1,9 +1,10 @@
-import React from 'react';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import App from "./components/App";
 import logger from "redux-logger";
 import { Provider } from 'react-redux';
+
+
 
 const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
   switch (action.type) {
@@ -16,7 +17,6 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
       break;
       
       case 'SUBSTRACT':
-        
         state = {
         ...state, 
         result: state.result + action.payload, 
@@ -30,7 +30,6 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
   return state; 
 }
 
-
 const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
   switch (action.type) {
     case 'SET_NAME':
@@ -40,38 +39,38 @@ const userReducer = ( state = {name: "Daniel", age: 37 }, action) => {
       };
       break;
 
-      case 'SET_AGE':
+    case 'SET_AGE':
       state = {
         ...state, 
         age: action.payload,
       };
       break;  
     
-      default:
+    default:
         return state;
-      }
-      return state; 
   }
+  return state; 
+}
 
-/* OK FOR VERSION1  & VERSION2 -CASE1
------------------------------------------*/
-// const store = createStore (  
-//     combineReducers( {mathReducer, userReducer} ),
-//     {}, 
-//     applyMiddleware(logger)
-// ); 
+// /* OK FOR VERSION1 & VERSION2 - CASE1
+// -----------------------------------------*/
+const store = createStore (  
+    combineReducers( {mathReducer, userReducer} ),
+    {}, 
+    applyMiddleware(logger)
+); 
 
 
 /* OK FOR VERSION2 CASE2
 -----------------------------------------*/
-const store = createStore ( 
-    combineReducers( {
-      math: mathReducer, 
-      user: userReducer
-    }),
-    {}, 
-    applyMiddleware(logger)
-); 
+// const store = createStore ( 
+//     combineReducers( {
+//       math: mathReducer, 
+//       user: userReducer
+//     }),
+//     {}, 
+//     applyMiddleware(logger)
+// ); 
   
 
 render( <Provider store={store}>

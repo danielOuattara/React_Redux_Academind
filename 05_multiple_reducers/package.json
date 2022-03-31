@@ -1,5 +1,5 @@
 {
-  "name": "03_using_redux",
+  "name": "05_mutliple_reducers",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

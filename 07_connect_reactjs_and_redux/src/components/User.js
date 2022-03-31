@@ -5,7 +5,7 @@ export default class User extends Component {
         return (
             <div>
                 <h2>User page: </h2>
-                <p>Username: {this.props.username}</p>                
+                <p>Username: {this.props.username}, {this.props.age}</p>                
             </div>
         )
     }

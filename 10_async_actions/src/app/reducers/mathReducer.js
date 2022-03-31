@@ -10,7 +10,6 @@ const mathReducer = ( state = {result: 1, lastValues: [] }, action) => {
       break;
       
       case 'SUBSTRACT':
-        
         state = {
         ...state, 
         result: state.result + action.payload, 

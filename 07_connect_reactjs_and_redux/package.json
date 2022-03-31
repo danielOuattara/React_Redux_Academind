@@ -1,5 +1,5 @@
 {
-  "name": "03_using_redux",
+  "name": "07_connect_reactjs_and_redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
