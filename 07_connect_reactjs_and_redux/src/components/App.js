@@ -37,40 +37,37 @@
 /* Version 2 
 -------------*/
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import Main from "./Main";
 import User from "./User";
 
 class App extends React.Component {
-
   // changeUser() {
   //     this.props.setName("Julie")
   //     this.props.setAge(number)
   // }
-  
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="container">
-        <Main 
-          changeUser= {(newName) => this.props.setName(newName)} 
-          changeAge= {(number) => this.props.setAge(number)} 
+        <Main
+          changeUser={(newName) => this.props.setName(newName)}
+          changeAge={(number) => this.props.setAge(number)}
         />
-        <User username={this.props.user.name} age={this.props.user.age}/>
+        <User username={this.props.user.name} age={this.props.user.age} />
       </div>
     );
   }
 }
 
-
-// VERSION2 - CASE 1 
+// VERSION2 - CASE 1
 
 const mapStateToProps = (state) => {
   return {
     user: state.userReducer,
-    math: state.mathReducer
+    math: state.mathReducer,
   };
 };
 
@@ -89,15 +86,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "SET_NAME",
         payload: name,
-      })
+      });
     },
     setAge: (number) => {
       dispatch({
         type: "SET_AGE",
         payload: number,
-      })
+      });
     },
-
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);
